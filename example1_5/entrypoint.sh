@@ -1,3 +1,5 @@
+/bin/bash
+
 echo "slapd slapd/internal/adminpw password ${LDAP_ADMIN_PASSWORD}" | debconf-set-selections
 echo "slapd slapd/internal/generated_adminpw password ${LDAP_ADMIN_PASSWORD}" | debconf-set-selections
 echo "slapd slapd/password1 password ${LDAP_ADMIN_PASSWORD}" | debconf-set-selections
@@ -9,5 +11,3 @@ service slapd start
 
 #add custom schema
 ldapadd -Y EXTERNAL -H ldapi:// -f /etc/ldap/schema/custom_inetorgperson.ldif
-
-/bin/bash
